@@ -15,9 +15,12 @@ function AffichageEvents(){
     
       return (
         <div>
-          {events.map((ev) => (
-            <EventCard key={ev.id} event={ev} />
-          ))}
+          <h1>Évènements</h1>
+          <div>
+            {events.map((ev) => (
+              <EventCard key={ev.id} event={ev} />
+            ))}
+          </div>
         </div>
       )
 
