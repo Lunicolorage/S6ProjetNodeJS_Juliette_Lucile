@@ -1,32 +1,26 @@
 import { useState } from 'react'
 import './App.css'
 import { useEffect } from 'react'
+import { BrowserRouter } from "react-router-dom";
+import { Route, Link, Routes } from "react-router-dom";
+import { AffichageEvents } from './components/affichageAllevents/AffichageEvents';
+import { CreateEvent } from './components/CreateEvent';
+import { AffichageUnEvent } from './components/AffichageUnEvent';
+import { NotFound } from './components/NotFound';
 
 function App() {
-  const [events, setEvents] = useState([]);
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/events')
-    .then((res) => res.json())
-    .then((data) => setEvents(data.events))
-    // setEvent(response2);
-    // setLoading(false)
-  }, [])
-  
-
-  return (
-    <div>
-      {events.map((ev) => (
-        <div key={ev.id} className="event-card">
-          <h2>{ev.titre}</h2>
-          <p>{ev.description}</p>
-          <p>{ev.dateHeure}</p>
-          <p>{ev.lieu}</p>
-          <p>Votes: {ev.nbVotes}</p>
-        </div>
-      ))}
-    </div>
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AffichageEvents />} />
+        <Route path="/creation" element={<CreateEvent />} />
+        <Route path="/event/:id" element={<AffichageUnEvent />}/>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   )
-}
 
+
+}
 export default App
