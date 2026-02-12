@@ -124,8 +124,8 @@ app.get('/', (req, res) => {
 
 // TODO: Route GET /api/events - Récupérer tous les événements
 app.get('/api/events', (req, res) => {
-    const event = readEvents()
-    res.json({event})
+    const events = readEvents()
+    res.json({events})
 })
 
 // TODO: Route GET /api/events/:id - Récupérer un événement spécifique
@@ -140,19 +140,21 @@ app.get('/api/events/:id', (req, res) => {
   } 
 });
 
+let idEvent = 1;
 // TODO: Route POST /api/events - Ajouter un nouvel événement
 app.post('/api/events', (req, res) => { // post dans action form
     const events = readEvents()
     
     // let newEvents = 
-    //     {"id": 3,
-    //     "titre": "tes2",
+    //     {"titre": "tes2",
     //     "description": "azryio zertyui sdfg sdfghj rtyui sdfghj",
     //     "dateHeure": "2026-04-10T06:13:45.000Z",
     //     "lieu": "8 rue des petites écuries 44000 Nantes",
     //     "nbVotes": 3};
 
-    let newEvent = req.body
+    let newEvent = req.body;
+    newEvent.id = idEvent;
+    idEvent += 1;
 
     events.push(newEvent);
     // events = [...events, newEvents]
@@ -162,6 +164,26 @@ app.post('/api/events', (req, res) => { // post dans action form
 
 // TODO: Route POST /api/events/:id/vote - Voter pour un événement
 app.post('/api/events/:id/vote', (req, res) => {
+  const id = req.params.id;
+  const events = readEvents();
+  const event = events.find(e => e.id == id);
+
+  //changer le nombre de votes
+  if (event) {
+    event.nbVotes += 1;
+  } else { 
+    res.status(404).json({ error: 'Événement non trouvé' }); 
+    return; 
+  }    
+  
+  //remplacer l'event dans le tableau des events
+  events.forEach((ev, index) => {
+    if (ev.id == id){
+      events[index] = event;
+    }
+  })
+
+  writeEvents(events)
 
 })
 
@@ -202,5 +224,6 @@ app.listen(PORT, () => {
   console.log(`  → http://localhost:${PORT}/`);
   console.log(`  → http://localhost:${PORT}/api/events`);
   console.log(`  → http://localhost:${PORT}/api/events/:id`);
+  console.log(`  → http://localhost:${PORT}/api/events/:id/vote`);
   console.log('════════════════════════════════════════');
 });
