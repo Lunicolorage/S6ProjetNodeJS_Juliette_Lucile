@@ -153,6 +153,9 @@ app.post('/api/events', (req, res) => { // post dans action form
 
     let newEvent = req.body;
     newEvent.id = Date.now();
+    if (typeof newEvent.nbVotes !== 'number') {
+      newEvent.nbVotes = 0;
+    }
 
     events.push(newEvent);
     // events = [...events, newEvents]
@@ -183,7 +186,7 @@ app.post('/api/events/:id/vote', (req, res) => {
   })
 
   writeEvents(events)
-
+  res.json(event);
 })
 
 // TODO: Route DELETE /api/events/:id - Supprimer un événement
