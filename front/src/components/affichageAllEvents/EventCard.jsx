@@ -11,12 +11,14 @@ function EventCard({event, vote, setVote}){
         setVote([...vote, id])
     }
 
+    const formattedDate = new Date(event.dateHeure).toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' });
+
     return(
         <div key={event.id} className="event-card">
             {/* <h2 className="bg-red-500 text-white p-10 text-3xl">{event.titre}</h2> */}
             <p>{event.titre}</p>
             <p>Votes : {event.nbVotes}</p>
-            <p>Date : {event.dateHeure}</p>
+            <p>Date : {formattedDate}</p>
             <p>Lieu : {event.lieu}</p>
             <div>
                 <button onClick={() => aVote(event.id)}>voter</button>
