@@ -1,1 +1,23 @@
- 
+Installation fichier /server
+
+Installation de nodemon pour que le serveur se relançe automatiquement
+npm install –save-dev nodemon
+
+Installation de express
+npm install express cors
+
+----------------------------------------------------
+Installation fichier /front
+
+Installation de tailwincss
+npm install -D tailwindcss @tailwindcss/postcss postcss 
+
+Installation de react router
+npm install react-router-dom
+
+-----------------------------------------------------
+Lancer le serveur backend dans le fichier /server
+npx nodemon server.js
+
+Lancer le frontend dans le fichier /front
+npm run dev
