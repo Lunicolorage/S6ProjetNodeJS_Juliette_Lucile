@@ -4,11 +4,7 @@
     "description": "azryio zertyui sdfg sdfghj rtyui sdfghj",
     "dateHeure": "2026-04-10T06:13:45.000Z",
     "lieu": "8 rue des petites écuries 44000 Nantes",
-<<<<<<< create
     "nbVotes": 16,
-=======
-    "nbVotes": 80,
->>>>>>> affichage
     "id": 1
   },
   {
@@ -16,11 +12,7 @@
     "description": "azryio zertyui sdfg sdfghj rtyui sdfghj",
     "dateHeure": "2027-10-05T06:14:45.000Z",
     "lieu": "Nantes",
-<<<<<<< create
     "nbVotes": 12,
-=======
-    "nbVotes": 35,
->>>>>>> affichage
     "id": 1770907898685
   },
   {
@@ -28,7 +20,6 @@
     "description": "azryio zertyui sdfg sdfghj rtyui sdfghj",
     "dateHeure": "2027-10-05T06:14:45.000Z",
     "lieu": "Nantes",
-<<<<<<< create
     "nbVotes": 24,
     "id": 1770907918786
   },
@@ -53,7 +44,7 @@
     "description": "Suspendisse potenti. Vivamus non arcu tincidunt, congue massa at, porttitor velit. Curabitur lacinia nisl ut turpis convallis, at dictum urna aliquet. Nullam non urna eget felis interdum feugiat. Morbi vel neque elit. Nullam a luctus leo. Integer maximus sapien in bibendum scelerisque.",
     "dateHeure": "2026-02-25T19:05",
     "lieu": "Amboise",
-    "nbVotes": 0,
+    "nbVotes": 1,
     "id": 1770973576816
   },
   {
@@ -63,9 +54,13 @@
     "lieu": "Tours",
     "nbVotes": 0,
     "id": 1770976740257
-=======
-    "nbVotes": 34,
-    "id": 1770907918786
->>>>>>> affichage
+  },
+  {
+    "titre": "balade en mer",
+    "description": "une excursion au bord de la côte de la mer méditerranée",
+    "dateHeure": "2026-05-21T15:57",
+    "lieu": "Sanary sur mer",
+    "nbVotes": 1,
+    "id": 1770983611640
   }
 ]
