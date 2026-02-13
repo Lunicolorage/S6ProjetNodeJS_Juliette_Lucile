@@ -104,18 +104,18 @@ function writeEvents(events) {
 // ============================================
 
 // Route de test pour vérifier que le serveur fonctionne
-app.get('/', (req, res) => {
-  res.json({ 
-    message: 'Serveur d\'événements actif !',
-    endpoints: [
-      'GET /api/events - Liste tous les événements',
-      'GET /api/events/:id - Récupère un événement spécifique',
-      'POST /api/events - Crée un nouvel événement',
-      'POST /api/events/:id/vote - Vote pour un événement',
-      'DELETE /api/events/:id - Supprime un événement'
-    ]
-  });
-});
+// app.get('/', (req, res) => {
+//   res.json({ 
+//     message: 'Serveur d\'événements actif !',
+//     endpoints: [
+//       'GET /api/events - Liste tous les événements',
+//       'GET /api/events/:id - Récupère un événement spécifique',
+//       'POST /api/events - Crée un nouvel événement',
+//       'POST /api/events/:id/vote - Vote pour un événement',
+//       'DELETE /api/events/:id - Supprime un événement'
+//     ]
+//   });
+// });
 
 
 // ============================================
