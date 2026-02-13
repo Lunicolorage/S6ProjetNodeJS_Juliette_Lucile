@@ -1,7 +1,7 @@
 import './App.css'
 import { BrowserRouter } from "react-router-dom";
 import { Route, Link, Routes } from "react-router-dom";
-import { AffichageEvents } from './components/affichageAllevents/AffichageEvents';
+import { AffichageEvents } from './components/affichageAllEvents/AffichageEvents';
 import { CreateEvent } from './components/CreateEvent';
 import { AffichageUnEvent } from './components/AffichageUnEvent';
 import { NotFound } from './components/NotFound';
