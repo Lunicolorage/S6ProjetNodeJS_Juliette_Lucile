@@ -140,7 +140,11 @@ app.get('/api/events/:id', (req, res) => {
   } 
 });
 
+<<<<<<< create
 // Route POST /api/events - Ajouter un nouvel événement
+=======
+// TODO: Route POST /api/events - Ajouter un nouvel événement
+>>>>>>> affichage
 app.post('/api/events', (req, res) => { // post dans action form
     const events = readEvents()
     
