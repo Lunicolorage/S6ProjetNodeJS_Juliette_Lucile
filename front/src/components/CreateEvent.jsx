@@ -35,7 +35,7 @@ function CreateEvent(){
         console.log(event)
 
         try{
-            const response = await fetch('http://localhost:5000/api/events', {
+            const response = await fetch(`/api/events`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -62,7 +62,7 @@ function CreateEvent(){
     }
 
     return(
-        <div className="md:px-30 lg:px-80 my-5 md:my-10">
+        <div className="md:px-30 lg:px-70 my-5 md:my-10">
 
             <button className="bg-bleuClair rounded-md mb-6 px-4 py-2 ml-5 md:ml-0 cursor-pointer" onClick={() => window.location.href = "/"}>Retour</button>
 
