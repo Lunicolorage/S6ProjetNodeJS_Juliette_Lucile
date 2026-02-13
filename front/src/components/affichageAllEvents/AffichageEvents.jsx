@@ -15,10 +15,7 @@ function AffichageEvents(){
       useEffect(() => {
         fetch('/api/events')
         .then((res) => res.json())
-        .then((data) => {
-    console.log('data reçue :', data); // ← ajoute ça
-    setEvents(data.events);
-  })
+        .then((data) => setEvents(data.events))
         // setEvent(response2);
         // setLoading(false)
       }, [vote])
@@ -29,12 +26,9 @@ function AffichageEvents(){
           <h1 className="text-center text-3xl mb-10 mt-5">Évènements</h1>
           <button className="bg-bleuClair rounded-md mb-6 px-4 py-2 ml-10 md:ml-0 cursor-pointer" onClick={() => navigate('/creation')}>Créer un événement</button>
           <div className='mx-10 md:mx-0 mt-5 md:grid md:grid-cols-3 md:gap-5'>
-            {/* {events.map((ev) => (
+            {events.map((ev) => (
               <EventCard key={ev.id} event={ev}/>
-            ))} */}
-            {(events || []).map((ev) => (
-  <EventCard key={ev.id} event={ev}/>
-))}
+            ))}
           </div>
         </div>
       )
