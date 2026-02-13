@@ -7,18 +7,21 @@ import { AffichageEvents } from './components/affichageAllevents/AffichageEvents
 import { CreateEvent } from './components/CreateEvent';
 import { AffichageUnEvent } from './components/AffichageUnEvent';
 import { NotFound } from './components/NotFound';
+import { VoteProvider } from './VoteContext';
 
 function App() {
 
   return(
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AffichageEvents />} />
-        <Route path="/creation" element={<CreateEvent />} />
-        <Route path="/event/:id" element={<AffichageUnEvent />}/>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <VoteProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AffichageEvents />} />
+          <Route path="/creation" element={<CreateEvent />} />
+          <Route path="/event/:id" element={<AffichageUnEvent />}/>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </VoteProvider>
   )
 
 
