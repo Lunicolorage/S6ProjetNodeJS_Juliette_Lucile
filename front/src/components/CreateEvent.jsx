@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router";
 
 function CreateEvent(){
     const [titreEvent, setTitreEvent] = useState('');
@@ -6,6 +7,7 @@ function CreateEvent(){
     const [lieuEvent, setLieuEvent] = useState('');
     const [dateEvent, setDateEvent] = useState('');
     const [loading, setLoading] = useState(false);
+    let navigate = useNavigate();
 
     function handleChangeTitre(e){
         setTitreEvent(e.target.value);
@@ -64,7 +66,7 @@ function CreateEvent(){
     return(
         <div className="md:px-30 lg:px-70 my-5 md:my-10">
 
-            <button className="bg-bleuClair rounded-md mb-6 px-4 py-2 ml-5 md:ml-0 cursor-pointer" onClick={() => window.location.href = "/"}>Retour</button>
+            <button className="bg-bleuClair rounded-md mb-6 px-4 py-2 ml-5 md:ml-0 cursor-pointer" onClick={() => navigate("/")}>Retour</button>
 
             <div className="p-5 md:p-7 mx-5 md:mx-0 rounded-lg border-3 border border-bleuClair">
                 <h1 className="text-center text-3xl mb-10">Création d'un évènement</h1>
