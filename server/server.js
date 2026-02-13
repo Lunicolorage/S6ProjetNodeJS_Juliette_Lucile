@@ -140,7 +140,6 @@ app.get('/api/events/:id', (req, res) => {
   } 
 });
 
-let idEvent = 1;
 // TODO: Route POST /api/events - Ajouter un nouvel événement
 app.post('/api/events', (req, res) => { // post dans action form
     const events = readEvents()
@@ -153,13 +152,16 @@ app.post('/api/events', (req, res) => { // post dans action form
     //     "nbVotes": 3};
 
     let newEvent = req.body;
-    newEvent.id = idEvent;
-    idEvent += 1;
+    newEvent.id = Date.now();
+    if (typeof newEvent.nbVotes !== 'number') {
+      newEvent.nbVotes = 0;
+    }
 
     events.push(newEvent);
     // events = [...events, newEvents]
 
     writeEvents(events)
+    res.status(201).json(newEvent);
 })
 
 // TODO: Route POST /api/events/:id/vote - Voter pour un événement
@@ -184,7 +186,7 @@ app.post('/api/events/:id/vote', (req, res) => {
   })
 
   writeEvents(events)
-
+  res.json(event);
 })
 
 // TODO: Route DELETE /api/events/:id - Supprimer un événement
