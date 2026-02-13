@@ -23,7 +23,7 @@ const cors = require('cors');
 const app = express();
 
 // Définir le port (comme un numéro de porte d'entrée)
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Chemin vers le fichier qui stockera nos événements
 const eventsFilePath = path.join(__dirname, 'data', 'events.json');
@@ -119,16 +119,16 @@ app.get('/', (req, res) => {
 
 
 // ============================================
-// ICI, VOUS AJOUTEREZ VOS ROUTES
+// ROUTES
 // ============================================
 
-// TODO: Route GET /api/events - Récupérer tous les événements
+// Route GET /api/events - Récupérer tous les événements
 app.get('/api/events', (req, res) => {
     const events = readEvents()
     res.json({events})
 })
 
-// TODO: Route GET /api/events/:id - Récupérer un événement spécifique
+// Route GET /api/events/:id - Récupérer un événement spécifique
 app.get('/api/events/:id', (req, res) => {
   const id = req.params.id;
   const events = readEvents();
@@ -140,8 +140,7 @@ app.get('/api/events/:id', (req, res) => {
   } 
 });
 
-let idEvent = 1;
-// TODO: Route POST /api/events - Ajouter un nouvel événement
+// Route POST /api/events - Ajouter un nouvel événement
 app.post('/api/events', (req, res) => { // post dans action form
     const events = readEvents()
     
@@ -153,16 +152,19 @@ app.post('/api/events', (req, res) => { // post dans action form
     //     "nbVotes": 3};
 
     let newEvent = req.body;
-    newEvent.id = idEvent;
-    idEvent += 1;
+    newEvent.id = Date.now();
+    if (typeof newEvent.nbVotes !== 'number') {
+      newEvent.nbVotes = 0;
+    }
 
     events.push(newEvent);
     // events = [...events, newEvents]
 
     writeEvents(events)
+    res.status(201).json(newEvent);
 })
 
-// TODO: Route POST /api/events/:id/vote - Voter pour un événement
+// Route POST /api/events/:id/vote - Voter pour un événement
 app.post('/api/events/:id/vote', (req, res) => {
   const id = req.params.id;
   const events = readEvents();
@@ -184,23 +186,26 @@ app.post('/api/events/:id/vote', (req, res) => {
   })
 
   writeEvents(events)
-
+  res.json(event);
 })
 
 // TODO: Route DELETE /api/events/:id - Supprimer un événement
 
+// ============================================
+// FRONT REACT (build statique)
+// ============================================
+
+// Sert les fichiers statiques du build React
+app.use(express.static(path.join(__dirname, 'front/dist'))); // 'dist' pour Vite, 'build' pour CRA
+
+// Toutes les routes non-API renvoient index.html
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, '../front/dist', 'index.html'));
+});
 
 // ============================================
 // GESTION DES ERREURS
 // ============================================
-
-// Route 404 - Si aucune route ne correspond
-app.use((req, res) => {
-  res.status(404).json({ 
-    error: 'Route non trouvée',
-    path: req.url 
-  });
-});
 
 // Gestionnaire d'erreurs global
 app.use((err, req, res, next) => {
