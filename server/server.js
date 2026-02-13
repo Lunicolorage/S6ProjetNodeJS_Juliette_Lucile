@@ -196,7 +196,8 @@ app.post('/api/events/:id/vote', (req, res) => {
 // ============================================
 
 // Sert les fichiers statiques du build React
-app.use(express.static(path.join(__dirname, 'front/dist'))); // 'dist' pour Vite, 'build' pour CRA
+console.log('Chemin dist:', path.join(__dirname, '../front/dist'));
+app.use(express.static(path.join(__dirname, '../front/dist'))); // 'dist' pour Vite
 
 // Toutes les routes non-API renvoient index.html
 app.use((req, res) => {
