@@ -1,3 +1,7 @@
+<<<<<<< create
+
+function EventCard({event, vote, setVote}){
+=======
 import { useActionState, useContext, useState  } from "react";
 import { VoteContext } from "../../VoteContext";
 import { useNavigate } from "react-router";
@@ -15,6 +19,7 @@ function EventCard({event}){
             setDejaVote(true);
         }
     }, [vote, event.id]);
+>>>>>>> affichage
 
     async function aVote(id){
         // console.log("vote pour " + id);
@@ -24,6 +29,22 @@ function EventCard({event}){
             // Optionnel : Mettre à jour l'interface utilisateur après le vote }) 
             // .catch((error) => { console.error('Erreur lors du vote:', error); });
         setVote([...vote, id])
+<<<<<<< create
+    }
+
+    const formattedDate = new Date(event.dateHeure).toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' });
+
+    return(
+        <div key={event.id} className="event-card">
+            {/* <h2 className="bg-red-500 text-white p-10 text-3xl">{event.titre}</h2> */}
+            <p>{event.titre}</p>
+            <p>Votes : {event.nbVotes}</p>
+            <p>Date : {formattedDate}</p>
+            <p>Lieu : {event.lieu}</p>
+            <div>
+                <button onClick={() => aVote(event.id)}>voter</button>
+                <a href={`/event/${event.id}`}>Voir</a>
+=======
         setDejaVote(true);
     }
     
@@ -42,6 +63,7 @@ function EventCard({event}){
                 {!dejaVote && <button className="bg-orangeClair rounded-md w-1/2 py-2 cursor-pointer" onClick={() => aVote(event.id)}>Voter</button>}
                 {/* <button className="bg-orangeClair rounded-md w-1/2 py-2 cursor-pointer" onClick={() => aVote(event.id)}>voter</button> */}
                 <button className="bg-bleuClair rounded-md w-1/2 py-2 cursor-pointer" onClick={() => navigate(`/event/${event.id}`)}>Voir</button>
+>>>>>>> affichage
             </div>
         </div>
     )
