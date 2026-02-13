@@ -32,7 +32,7 @@ function EventCard({event}){
     return(
         <div key={event.id} className="border-3 border border-bleuClair rounded-lg p-5 mb-5">
             {/* <h2 className="bg-red-500 text-white p-10 text-3xl">{event.titre}</h2> */}
-            <div className="h-30">
+            <div>
                 <p className="text-center text-xl" >{event.titre}</p>
                 <p>Votes : {event.nbVotes}</p>
                 <p>Date : {formattedDate}</p>
