@@ -8,12 +8,12 @@ function AffichageEvents(){
     let navigate = useNavigate();
 
     const [events, setEvents] = useState([]);
-    const [vote, setVote] = useContext(VoteContext);
+    const [vote] = useContext(VoteContext);
 
     
     
       useEffect(() => {
-        fetch('http://localhost:5000/api/events')
+        fetch('/api/events')
         .then((res) => res.json())
         .then((data) => setEvents(data.events))
         // setEvent(response2);

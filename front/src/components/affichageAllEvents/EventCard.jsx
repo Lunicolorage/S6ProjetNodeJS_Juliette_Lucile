@@ -1,4 +1,4 @@
-import { useActionState, useContext, useState  } from "react";
+import { useContext, useState  } from "react";
 import { VoteContext } from "../../VoteContext";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
@@ -18,7 +18,7 @@ function EventCard({event}){
 
     async function aVote(id){
         // console.log("vote pour " + id);
-    await fetch(`http://localhost:5000/api/events/${id}/vote`, {method: 'POST', }) 
+    await fetch(`/api/events/${id}/vote`, {method: 'POST', }) 
         .then((res) => res.json()) 
         .then((data) => { console.log('Vote enregistré:', data); })
             // Optionnel : Mettre à jour l'interface utilisateur après le vote }) 

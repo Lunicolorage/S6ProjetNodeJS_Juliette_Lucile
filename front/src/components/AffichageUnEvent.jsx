@@ -14,7 +14,7 @@ function AffichageUnEvent(){
     const [vote, setVote] = useContext(VoteContext);
         
     useEffect(() => {
-        fetch('http://localhost:5000/api/events/' + id)
+        fetch('/api/events/' + id)
         .then((res) => res.json())
         .then((data) => {
             // console.log('Données reçues:', data);
@@ -31,7 +31,7 @@ function AffichageUnEvent(){
 
 
     async function aVote(id){
-        await fetch(`http://localhost:5000/api/events/${id}/vote`, {method: 'POST', }) 
+        await fetch(`/api/events/${id}/vote`, {method: 'POST', }) 
             .then((res) => res.json()) 
             .then((data) => { 
                 console.log('Vote enregistré:', data);
